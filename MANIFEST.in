@@ -4,4 +4,4 @@ include *.rst
 exclude yandex_maps/my_tests.py
 
 recursive-include yandex_maps *.html
-recursive-include yandex_maps_tests *.html *.py
+recursive-exclude yandex_maps_tests *.html *.py

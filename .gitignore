@@ -10,6 +10,7 @@ nbproject/*
 .buildpath
 build.properties
 MANIFEST.MF
+.idea/
 
 #temp files
 *.pyc
@@ -23,6 +24,7 @@ stuff/
 Thumbs.db
 
 #setup files
+yandex_maps.egg-info/
 build/
 dist/
 MANIFEST

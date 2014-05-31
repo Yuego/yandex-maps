@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from yandex_maps.api import geocode, get_map_url
 
 import warnings

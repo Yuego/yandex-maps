@@ -1,8 +1,9 @@
 #coding: utf-8
+from __future__ import unicode_literals
 from unittest import TestCase
 from yandex_maps.api import _get_coords, get_map_url
 
-RESPONSE = u"""<?xml version="1.0" encoding="utf-8"?>
+RESPONSE = """<?xml version="1.0" encoding="utf-8"?>
 <ymaps xmlns="http://maps.yandex.ru/ymaps/1.x" xmlns:x="http://www.yandex.ru/xscript">
   <GeoObjectCollection>
     <metaDataProperty xmlns="http://www.opengis.net/gml">
@@ -51,9 +52,9 @@ RESPONSE = u"""<?xml version="1.0" encoding="utf-8"?>
     </featureMember>
   </GeoObjectCollection>
 </ymaps>
-""".encode('utf8')
+""".encode('utf-8')
 
-UNKNOWN_ADDRESS = u'''<?xml version="1.0" encoding="utf-8"?>
+UNKNOWN_ADDRESS = '''<?xml version="1.0" encoding="utf-8"?>
 <ymaps xmlns="http://maps.yandex.ru/ymaps/1.x" xmlns:x="http://www.yandex.ru/xscript">
   <GeoObjectCollection>
     <metaDataProperty xmlns="http://www.opengis.net/gml">
@@ -65,10 +66,10 @@ UNKNOWN_ADDRESS = u'''<?xml version="1.0" encoding="utf-8"?>
     </metaDataProperty>
   </GeoObjectCollection>
 </ymaps>
-'''.encode('utf8')
+'''.encode('utf-8')
 
 TEST_API_KEY = 'vasia'
-COORDS = (u'60.603826', u'56.854581')
+COORDS = ('60.603826', '56.854581')
 MAP_URL = 'http://static-maps.yandex.ru/1.x/?ll=60.6038260,56.8545810&size=200,300&z=5&l=map&pt=60.6038260,56.8545810&key=vasia'
 
 class GeocodeParsingTest(TestCase):

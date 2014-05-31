@@ -1,4 +1,5 @@
 #coding: utf-8
+from __future__ import unicode_literals
 from django import template
 from django.contrib.gis.geos import Point
 from django.utils.html import conditional_escape
@@ -8,6 +9,7 @@ from yandex_maps.api import get_external_map_url
 register = template.Library()
 
 # FIXME: этот код ужасен :)
+
 
 def _url_for(address, external, *args, **kwargs):
     if isinstance(address, Point):
