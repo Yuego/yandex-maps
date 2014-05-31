@@ -7,13 +7,16 @@ import httplib2
 
 
 def request(method, url, data=None, headers={}, timeout=None):
-    host_port = url.split('/')[2]
+    host, _, port = url.split('/')[2].partition(':')
+    if not port:
+        port = None
+
     timeout_set = False
     try:
-        connection = httplib2.HTTPConnection(host_port, timeout=timeout)
+        connection = httplib2.HTTPConnectionWithTimeout(host, port=port, timeout=timeout)
         timeout_set = True
     except TypeError:
-        connection = httplib2.HTTPConnection(host_port)
+        connection = httplib2.HTTPConnectionWithTimeout(host, port=port)
 
     with closing(connection):
         if not timeout_set:

@@ -4,8 +4,12 @@ from __future__ import unicode_literals
 Yandex.Maps API wrapper
 """
 
+import six
 import xml.dom.minidom
-import urllib
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 from yandex_maps import http
 
 STATIC_MAPS_URL = 'http://static-maps.yandex.ru/1.x/?'
@@ -39,7 +43,7 @@ def get_external_map_url(longitude, latitude, zoom=14):
     )
     if zoom is not None:
         params['z'] = zoom
-    return HOSTED_MAPS_URL + urllib.urlencode(params)
+    return HOSTED_MAPS_URL + urlencode(params)
 
 
 def geocode(api_key, address, timeout=2):
@@ -56,9 +60,9 @@ def _get_geocode_xml(api_key, address, timeout=2):
     return response
 
 def _get_geocode_url(api_key, address):
-    if isinstance(address, unicode):
+    if isinstance(address, six.text_type):
         address = address.encode('utf8')
-    params = urllib.urlencode({'geocode': address, 'key': api_key})
+    params = urlencode({'geocode': address, 'key': api_key})
     return GEOCODE_URL + params
 
 def _get_coords(response):

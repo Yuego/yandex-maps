@@ -18,6 +18,7 @@ MANIFEST.MF
 *.orig
 *~
 stuff/
+__pycache__
 
 #os files
 .DS_Store
